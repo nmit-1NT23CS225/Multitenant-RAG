@@ -11,6 +11,5 @@ def get_connection():
         user=os.getenv("POSTGRES_USER"),
         password=os.getenv("POSTGRES_PASSWORD")
     )
-    
     return conn
     
