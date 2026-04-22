@@ -14,7 +14,9 @@ def ingest_document(tenant_id:int, doc_id: int,raw_text:str)->int:
     #store 
     conn=get_connection()
     cursor=conn.cursor()
+    #cursor.execute("""DELETE FROM chunks WHERE tenant_id = %s AND doc_id = %s""", (tenant_id, doc_id))
 
+    print("ingestor: cleared old chunks")
     for chunk_text_value,embedding in zip(chunks,embeddings):
         vector_str="["+",".join(str(x)for x in embedding)+"]"
         cursor.execute("""
